@@ -1,0 +1,10 @@
+*.pyc
+.cache
+__pycache__
+lib/
+gae/
+.DS_Store
+
+# local script
+run.sh
+deploy.sh
