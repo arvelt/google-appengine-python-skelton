@@ -4,4 +4,4 @@ import logging
 from google.appengine.ext import ndb
 
 class Greeting(ndb.Model):
-    no = ndb.StringProperty(indexed=True)
+    text = ndb.StringProperty(indexed=True)

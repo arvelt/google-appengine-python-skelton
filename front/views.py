@@ -28,9 +28,7 @@ class IndexView(TemplateView):
         return self.render_to_response({})
 
     def post(self, request, *args, **kwargs):
-        form = TypesForm(request.POST)
-        super_types_names = []
-
+        form = GreetingForm(request.POST)
         if form.is_valid():
             _form = form
         else:
