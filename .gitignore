@@ -5,6 +5,9 @@ lib/
 gae/
 .DS_Store
 
+#key
+skelton-secret.json
+
 # local script
 run.sh
 deploy.sh
