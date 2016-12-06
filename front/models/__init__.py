@@ -1,1 +1,1 @@
-from _greeting import Greeting
+from. _greeting import Greeting
