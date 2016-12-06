@@ -20,5 +20,5 @@ deploy:
   provider: gae
   skip_cleanup: true
   keyfile: skelton-secret.json
-  project: skelton
+  project: skelton-151710
   version: 0-0-1
