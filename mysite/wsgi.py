@@ -30,3 +30,7 @@ application = get_wsgi_application()
 
 from google.appengine.ext import ndb
 application = ndb.toplevel(application)
+
+# https://stackoverflow.com/questions/9604799/can-python-requests-library-be-used-on-google-app-engine
+import requests_toolbelt.adapters.appengine
+requests_toolbelt.adapters.appengine.monkeypatch()

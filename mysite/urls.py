@@ -14,8 +14,9 @@
 
 from django.conf.urls import include, url
 
-from front.views import IndexView
+from front.views import IndexView, JsonView
 
 urlpatterns = [
+    url(r'^forecast', JsonView.as_view()),
     url(r'^$', IndexView.as_view()),
 ]

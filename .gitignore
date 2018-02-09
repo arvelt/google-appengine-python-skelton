@@ -4,6 +4,7 @@ __pycache__
 lib/
 gae/
 .DS_Store
+.vscode
 
 #key
 skelton-secret.json

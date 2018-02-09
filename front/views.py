@@ -13,12 +13,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
+import requests
+import json
+from logging import basicConfig, getLogger, DEBUG
 
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic.base import View
 from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 from .forms import GreetingForm
+
+basicConfig(level=DEBUG)
+logger = getLogger(__name__)
 
 
 class IndexView(TemplateView):
@@ -34,3 +43,25 @@ class IndexView(TemplateView):
         else:
             _form = None
         return self.render_to_response({'form': _form})
+
+
+class JsonView(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super(JsonView, self).dispatch(*args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        _id = "130010" # Tokyo
+        URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=%s" % _id
+        # URL = "http://google.com"
+        logger.debug("URL %s", URL)
+        res = requests.get(URL)
+        try:
+            forecast = json.loads(res.text)
+        except (TypeError, ValueError) as e:
+            return HttpResponse(status=503)
+        return HttpResponse(str(forecast), content_type="text/plain")
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponse(status=200)
