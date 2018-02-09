@@ -8,13 +8,13 @@ logger = getLogger(__name__)
 
 
 class MyUser(ndb.Model):
-    id = ndb.StringProperty(indexed=False, default='')
-    name = ndb.StringProperty(indexed=False, default='')
+	id = ndb.StringProperty(indexed=False, default='')
+	name = ndb.StringProperty(indexed=False, default='')
 
 
 class Class(ndb.Model):
-    id = ndb.StringProperty(indexed=False, default='')
-    name = ndb.StringProperty(indexed=False, default='')
+	id = ndb.StringProperty(indexed=False, default='')
+	name = ndb.StringProperty(indexed=False, default='')
 	users = ndb.StructuredProperty(MyUser, indexed=False, repeated=True)
 
 	@classmethod
